@@ -15,9 +15,9 @@ const passwordRef= useRef(null)
     let pass=""
     let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     if(numberAllowed) str += "0123456789"
-    if(charAllowed) str += "!@#$%^&*()~`"
+    if(charAllowed) str += "!@#$%^&*-_+=[]{}~`"
     for (let i = 1; i <= length; i++) {
-     let char = Math.floor(Math.random()*str.length +1 )
+     let char = Math.floor(Math.random()* str.length +1 )
       pass += str.charAt(char)
     }
     
@@ -83,16 +83,17 @@ const passwordRef= useRef(null)
             <div className='flex items-center gap-x-1'>
               <input
                 type="checkbox"
-                defaultChecked={charAllowed}
-                id="characterInput"
-                onChange={() => {
-                  setcharAllowed((prev) => !prev)
-                }}
+              defaultChecked={charAllowed}
+              id="characterInput"
+              onChange={() => {
+                  setCharAllowed((prev) => !prev )
+                  }}
+              
               />
               <label htmlFor="characterInput">Character</label>
             </div>
 
-        </div>
+            </div>
         </div>
     </>
   )
