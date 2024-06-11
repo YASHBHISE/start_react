@@ -224,27 +224,8 @@ const treeData = [
 
 const App = () => {
     
-    const [state, setstate] = useState([]);
-    useEffect(() => {
-        mapTree(treeData, state, setstate);
-    }, [])
-    useEffect(() => {
-        console.log(state)
-    }, [state])
-    let arr = []
-    const mapTree = (treeData) =>{
-        treeData.forEach((ele)=>{
-            console.log(ele, state);
-            setstate([...state, ele])
-            arr.push(ele);
-            const children = ele.children && JSON.parse(JSON.stringify(ele.children));
-            delete ele.children && ele['children'];
-            if(children && children.length){
-                return mapTree(children)
-            }
-        })
-    }
-    console.log(arr)
+    
+    
     return (
 <div className="tree">
     {
@@ -264,7 +245,7 @@ const treeRendering = (treeData) => {
                 <ul>
             {
                 treeData.map((item)=>                
-                    <li className={item.text+item.field}>
+                    <li className={item.operator+item.field}>
                         <div>{ item.field}</div>
                         {
                             item.conditions && item.conditions.length ?
